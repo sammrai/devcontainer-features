@@ -1,0 +1,22 @@
+{
+  "id": "gcloud-cli",
+  "version": "1.0.0",
+  "name": "Google Cloud CLI",
+  "description": "Installs the Google Cloud CLI (gcloud) and related tools",
+  "documentationURL": "https://cloud.google.com/sdk/docs",
+  "options": {
+    "version": {
+      "type": "string",
+      "default": "latest",
+      "description": "Version of gcloud CLI to install. Use 'latest' for the most recent version."
+    },
+    "installComponents": {
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of additional gcloud components to install (e.g., 'kubectl,docker-credential-gcr')"
+    }
+  },
+  "installsAfter": [
+    "ghcr.io/devcontainers/features/common-utils"
+  ]
+}
