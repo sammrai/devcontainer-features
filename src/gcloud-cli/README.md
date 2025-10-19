@@ -1,98 +1,46 @@
-# Google Cloud CLI (gcloud) Feature
+# Google Cloud CLI
 
-This devcontainer feature installs the Google Cloud CLI (gcloud) and related tools.
-
-## Usage
-
-Add this feature to your `devcontainer.json`:
-
-```json
-{
-  "features": {
-    "your-registry/gcloud-cli": {
-      "version": "latest",
-      "installComponents": ""
-    }
-  }
-}
-```
+Installs Google Cloud CLI (gcloud) on Debian/Ubuntu-based containers.
 
 ## Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `version` | string | `latest` | Version of gcloud CLI to install. Use 'latest' for the most recent version. |
-| `installComponents` | string | `""` | Comma-separated list of additional gcloud components to install (e.g., 'kubectl,docker-credential-gcr') |
+| Option | Default | Description |
+|--------|---------|-------------|
+| `version` | `latest` | gcloud CLI version |
+| `installComponents` | `""` | Additional components (comma-separated) |
 
-## Examples
-
-### Install latest version with default components
+## Usage
 
 ```json
 {
   "features": {
-    "your-registry/gcloud-cli": {}
+    "ghcr.io/sammrai/devcontainer-features/gcloud-cli:1": {}
   }
 }
 ```
 
-### Install with additional components
+With additional components:
 
 ```json
 {
   "features": {
-    "your-registry/gcloud-cli": {
-      "version": "latest",
+    "ghcr.io/sammrai/devcontainer-features/gcloud-cli:1": {
       "installComponents": "kubectl,docker-credential-gcr,gke-gcloud-auth-plugin"
     }
   }
 }
 ```
 
-### Install specific version
+## Common Components
 
-```json
-{
-  "features": {
-    "your-registry/gcloud-cli": {
-      "version": "543.0.0-0"
-    }
-  }
-}
-```
-
-## Available Components
-
-Some commonly used components you can install:
-- `kubectl` - Kubernetes command-line tool
+- `kubectl` - Kubernetes CLI
 - `docker-credential-gcr` - Docker credential helper for GCR
 - `gke-gcloud-auth-plugin` - GKE authentication plugin
 - `app-engine-python` - App Engine Python support
-- `app-engine-java` - App Engine Java support
-- `pubsub-emulator` - Cloud Pub/Sub emulator
-- `bigtable-emulator` - Cloud Bigtable emulator
-- `datastore-emulator` - Cloud Datastore emulator
-
-For a complete list of available components, run:
-```bash
-apt-cache search google-cloud-cli-
-```
 
 ## Authentication
-
-After installation, you'll need to authenticate with Google Cloud:
 
 ```bash
 gcloud auth login
 gcloud config set project YOUR_PROJECT_ID
 ```
-
-## Documentation
-
-For more information about the Google Cloud CLI, see:
-- [Official Documentation](https://cloud.google.com/sdk/docs)
-- [gcloud CLI Reference](https://cloud.google.com/sdk/gcloud/reference)
-
-## License
-
-This feature follows the Google Cloud SDK licensing terms.
