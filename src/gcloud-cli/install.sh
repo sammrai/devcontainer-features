@@ -7,9 +7,21 @@ INSTALL_COMPONENTS=${INSTALLCOMPONENTS:-""}
 
 echo "Installing Google Cloud CLI..."
 
+# Speed up installation by skipping unnecessary docs and man pages
+export DEBIAN_FRONTEND=noninteractive
+mkdir -p /etc/dpkg/dpkg.cfg.d
+cat > /etc/dpkg/dpkg.cfg.d/01_nodoc <<EOF
+path-exclude /usr/share/doc/*
+path-exclude /usr/share/man/*
+path-exclude /usr/share/groff/*
+path-exclude /usr/share/info/*
+path-exclude /usr/share/lintian/*
+path-exclude /usr/share/linda/*
+EOF
+
 # Install required dependencies
 apt-get update
-apt-get install -y apt-transport-https ca-certificates gnupg curl
+apt-get install -y --no-install-recommends apt-transport-https ca-certificates gnupg curl
 
 # Add Google Cloud SDK GPG key
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
@@ -22,9 +34,9 @@ apt-get update
 
 # Install Google Cloud CLI
 if [ "$VERSION" = "latest" ]; then
-    apt-get install -y google-cloud-cli
+    apt-get install -y --no-install-recommends google-cloud-cli
 else
-    apt-get install -y google-cloud-cli=$VERSION
+    apt-get install -y --no-install-recommends google-cloud-cli=$VERSION
 fi
 
 # Install additional components if specified
@@ -35,7 +47,7 @@ if [ -n "$INSTALL_COMPONENTS" ]; then
         component=$(echo "$component" | xargs)  # trim whitespace
         if [ -n "$component" ]; then
             echo "Installing component: $component"
-            apt-get install -y "google-cloud-cli-$component" || echo "Warning: Could not install $component"
+            apt-get install -y --no-install-recommends "google-cloud-cli-$component" || echo "Warning: Could not install $component"
         fi
     done
 fi
