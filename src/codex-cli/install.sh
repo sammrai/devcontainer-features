@@ -5,7 +5,7 @@ set -e
 NODE_VERSION=${NODEVERSION:-"22"}
 INSTALL_GLOBALLY=${INSTALLGLOBALLY:-"true"}
 
-echo "Installing Google Gemini CLI..."
+echo "Installing OpenAI Codex CLI..."
 
 # Speed up installation by skipping unnecessary docs and man pages
 export DEBIAN_FRONTEND=noninteractive
@@ -51,21 +51,20 @@ nvm alias default "$NODE_VERSION"
 echo "Node.js version: $(node --version)"
 echo "npm version: $(npm --version)"
 
-# Install Gemini CLI
+# Install Codex CLI
 if [ "$INSTALL_GLOBALLY" = "true" ]; then
-    echo "Installing @google/gemini-cli globally..."
-    npm install -g @google/gemini-cli
+    echo "Installing @openai/codex globally..."
+    npm install -g @openai/codex
 else
-    echo "Installing @google/gemini-cli locally..."
-    npm install @google/gemini-cli
+    echo "Installing @openai/codex locally..."
+    npm install @openai/codex
 fi
 
 # Clean up
 apt-get clean
 rm -rf /var/lib/apt/lists/*
 
-echo "Google Gemini CLI installation complete!"
+echo "OpenAI Codex CLI installation complete!"
 echo ""
-echo "To start using Gemini CLI, run: gemini"
-echo "Note: You will need to authenticate with your Google account on first use."
-echo "To exit Gemini CLI, press Ctrl+C twice."
+echo "To start using Codex CLI, run: codex"
+echo "Note: You will need an OpenAI account with a paid plan (Plus/Pro/Team) or an API key."
