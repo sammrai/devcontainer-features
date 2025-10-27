@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        feature: [gcloud-cli, gemini-cli, codex-cli]
+        feature: [gcloud-cli, gemini-cli, codex]
         base-image:
           - mcr.microsoft.com/devcontainers/python:3.11-bullseye
           - mcr.microsoft.com/devcontainers/python:3.12-bookworm

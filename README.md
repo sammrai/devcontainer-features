@@ -8,7 +8,7 @@ Collection of DevContainer features for Google Cloud and AI tools.
 |---------|-------------|---------------|
 | [gcloud-cli](./src/gcloud-cli) | Google Cloud CLI (gcloud) and related tools | [README](./src/gcloud-cli/README.md) |
 | [gemini-cli](./src/gemini-cli) | Google Gemini CLI with Node.js and nvm | [README](./src/gemini-cli/README.md) |
-| [codex-cli](./src/codex-cli) | OpenAI Codex with Node.js and nvm | [README](./src/codex-cli/README.md) |
+| [codex](./src/codex) | OpenAI Codex with Node.js and nvm | [README](./src/codex/README.md) |
 
 ## Usage
 
@@ -19,7 +19,7 @@ Add features to your `.devcontainer/devcontainer.json`:
   "features": {
     "ghcr.io/sammrai/devcontainer-features/gcloud-cli:1": {},
     "ghcr.io/sammrai/devcontainer-features/gemini-cli:1": {},
-    "ghcr.io/sammrai/devcontainer-features/codex-cli:1": {}
+    "ghcr.io/sammrai/devcontainer-features/codex:1": {}
   }
 }
 ```
