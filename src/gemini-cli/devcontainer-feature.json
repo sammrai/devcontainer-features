@@ -1,6 +1,6 @@
 {
   "id": "gemini-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "Google Gemini CLI",
   "description": "Installs the Google Gemini CLI for AI-powered command line interactions",
   "documentationURL": "https://www.npmjs.com/package/@google/gemini-cli",

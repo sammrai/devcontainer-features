@@ -1,6 +1,6 @@
 {
   "id": "codex",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "OpenAI Codex",
   "description": "Installs OpenAI Codex for AI-powered coding assistance",
   "documentationURL": "https://www.npmjs.com/package/@openai/codex",
