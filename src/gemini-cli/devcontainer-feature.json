@@ -1,0 +1,22 @@
+{
+  "id": "gemini-cli",
+  "version": "1.0.0",
+  "name": "Google Gemini CLI",
+  "description": "Installs the Google Gemini CLI for AI-powered command line interactions",
+  "documentationURL": "https://www.npmjs.com/package/@google/gemini-cli",
+  "options": {
+    "nodeVersion": {
+      "type": "string",
+      "default": "22",
+      "description": "Node.js LTS version to install (required for Gemini CLI)"
+    },
+    "installGlobally": {
+      "type": "boolean",
+      "default": true,
+      "description": "Install Gemini CLI globally (recommended)"
+    }
+  },
+  "installsAfter": [
+    "ghcr.io/devcontainers/features/common-utils"
+  ]
+}
