@@ -33,12 +33,18 @@ fi
 # Check if nvm is already installed and loadable
 if [ -n "$NVM_DIR" ] && [ -s "$NVM_DIR/nvm.sh" ]; then
     echo "nvm is already installed at $NVM_DIR"
-    \. "$NVM_DIR/nvm.sh"
 else
     echo "Installing nvm (Node Version Manager)..."
     export NVM_DIR="$HOME/.nvm"
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+fi
+
+# Load nvm (must be done after installation/detection)
+if [ -s "$NVM_DIR/nvm.sh" ]; then
     \. "$NVM_DIR/nvm.sh"
+else
+    echo "ERROR: Could not find nvm.sh at $NVM_DIR/nvm.sh"
+    exit 1
 fi
 
 # Install Node.js LTS version
