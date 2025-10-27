@@ -23,27 +23,28 @@ EOF
 apt-get update
 apt-get install -y --no-install-recommends curl ca-certificates gnupg
 
-# Detect and load nvm from common locations
+# Detect nvm from common locations
 if [ -d "/usr/local/share/nvm" ]; then
     export NVM_DIR="/usr/local/share/nvm"
 elif [ -d "$HOME/.nvm" ]; then
     export NVM_DIR="$HOME/.nvm"
-fi
-
-# Check if nvm is already installed and loadable
-if [ -n "$NVM_DIR" ] && [ -s "$NVM_DIR/nvm.sh" ]; then
-    echo "nvm is already installed at $NVM_DIR"
 else
-    echo "Installing nvm (Node Version Manager)..."
     export NVM_DIR="$HOME/.nvm"
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 fi
 
-# Load nvm (must be done after installation/detection)
+# Check if nvm is already installed
 if [ -s "$NVM_DIR/nvm.sh" ]; then
+    echo "nvm is already installed at $NVM_DIR"
     \. "$NVM_DIR/nvm.sh"
 else
-    echo "ERROR: Could not find nvm.sh at $NVM_DIR/nvm.sh"
+    echo "Installing nvm (Node Version Manager)..."
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+    \. "$NVM_DIR/nvm.sh"
+fi
+
+# Verify nvm is loaded
+if ! command -v nvm &> /dev/null; then
+    echo "ERROR: nvm command not found after installation"
     exit 1
 fi
 
