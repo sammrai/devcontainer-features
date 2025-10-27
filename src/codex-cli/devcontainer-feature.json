@@ -1,19 +1,19 @@
 {
   "id": "codex-cli",
   "version": "1.0.0",
-  "name": "OpenAI Codex CLI",
-  "description": "Installs the OpenAI Codex CLI for AI-powered coding assistance",
+  "name": "OpenAI Codex",
+  "description": "Installs OpenAI Codex for AI-powered coding assistance",
   "documentationURL": "https://www.npmjs.com/package/@openai/codex",
   "options": {
     "nodeVersion": {
       "type": "string",
       "default": "22",
-      "description": "Node.js LTS version to install (required for Codex CLI)"
+      "description": "Node.js LTS version to install (required for Codex)"
     },
     "installGlobally": {
       "type": "boolean",
       "default": true,
-      "description": "Install Codex CLI globally (recommended)"
+      "description": "Install Codex globally (recommended)"
     }
   },
   "installsAfter": [

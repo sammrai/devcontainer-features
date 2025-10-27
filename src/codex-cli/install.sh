@@ -5,7 +5,7 @@ set -e
 NODE_VERSION=${NODEVERSION:-"22"}
 INSTALL_GLOBALLY=${INSTALLGLOBALLY:-"true"}
 
-echo "Installing OpenAI Codex CLI..."
+echo "Installing OpenAI Codex..."
 
 # Speed up installation by skipping unnecessary docs and man pages
 export DEBIAN_FRONTEND=noninteractive
@@ -57,7 +57,7 @@ nvm alias default "$NODE_VERSION"
 echo "Node.js version: $(node --version)"
 echo "npm version: $(npm --version)"
 
-# Install Codex CLI
+# Install Codex
 if [ "$INSTALL_GLOBALLY" = "true" ]; then
     echo "Installing @openai/codex globally..."
     npm install -g @openai/codex
@@ -70,7 +70,7 @@ fi
 apt-get clean
 rm -rf /var/lib/apt/lists/*
 
-echo "OpenAI Codex CLI installation complete!"
+echo "OpenAI Codex installation complete!"
 echo ""
-echo "To start using Codex CLI, run: codex"
+echo "To start using Codex, run: codex"
 echo "Note: You will need an OpenAI account with a paid plan (Plus/Pro/Team) or an API key."

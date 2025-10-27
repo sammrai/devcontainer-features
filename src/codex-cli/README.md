@@ -1,12 +1,12 @@
-# OpenAI Codex CLI
+# OpenAI Codex
 
-Installs OpenAI Codex CLI on Debian/Ubuntu-based containers with Node.js and nvm support.
+Installs OpenAI Codex on Debian/Ubuntu-based containers with Node.js and nvm support.
 
 ## Features
 
 - Installs nvm (Node Version Manager)
 - Installs Node.js LTS (default: version 22)
-- Installs OpenAI Codex CLI via npm
+- Installs OpenAI Codex via npm
 - Supports both global and local installation
 
 ## Options
@@ -14,7 +14,7 @@ Installs OpenAI Codex CLI on Debian/Ubuntu-based containers with Node.js and nvm
 | Option | Default | Description |
 |--------|---------|-------------|
 | `nodeVersion` | `22` | Node.js LTS version to install |
-| `installGlobally` | `true` | Install Codex CLI globally (recommended) |
+| `installGlobally` | `true` | Install Codex globally (recommended) |
 
 ## Usage
 
@@ -42,7 +42,7 @@ With custom Node.js version:
 
 ## Prerequisites
 
-Before using Codex CLI, ensure you have:
+Before using Codex, ensure you have:
 
 1. **Node.js and npm installed** (automatically installed by this feature)
    - Verify with: `node --version` and `npm --version`
@@ -53,7 +53,7 @@ Before using Codex CLI, ensure you have:
 
 ## Getting Started
 
-After installation, start Codex CLI by running:
+After installation, start Codex by running:
 
 ```bash
 codex
@@ -81,6 +81,6 @@ Note: API usage will incur charges based on OpenAI's pricing.
 
 ## More Information
 
-For more details about Codex CLI, visit:
+For more details about Codex, visit:
 - npm package: https://www.npmjs.com/package/@openai/codex
 - OpenAI Platform: https://platform.openai.com/
