@@ -1,0 +1,50 @@
+name: Test and Release
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        feature: [gcloud-cli, gemini-cli, codex-cli]
+        base-image:
+          - mcr.microsoft.com/devcontainers/python:3.11-bullseye
+          - mcr.microsoft.com/devcontainers/python:3.12-bookworm
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Test ${{ matrix.feature }} on ${{ matrix.base-image }}
+        run: |
+          docker build --no-cache \
+            --build-arg BASE_IMAGE=${{ matrix.base-image }} \
+            -f - . <<'EOF'
+          ARG BASE_IMAGE
+          FROM ${BASE_IMAGE}
+          COPY src/${{ matrix.feature }}/install.sh /tmp/install.sh
+          RUN chmod +x /tmp/install.sh && /tmp/install.sh
+          EOF
+
+  release:
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Publish Features
+        uses: devcontainers/action@v1
+        with:
+          publish-features: "true"
+          base-path-to-features: "./src"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
